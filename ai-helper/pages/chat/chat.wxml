@@ -1,0 +1,142 @@
+<!--聊天页面-->
+<view class="chat-container">
+  <!-- 聊天头部 -->
+  <view class="chat-header">
+    <view class="ai-avatar">
+      <image src="/images/ai-teacher.png" mode="aspectFill"></image>
+      <view class="status-dot online"></view>
+    </view>
+    <view class="ai-info">
+      <view class="ai-name">AI英语老师</view>
+      <view class="ai-status">在线 · 准备聊天</view>
+    </view>
+    <view class="header-actions">
+      <button class="icon-btn" bindtap="toggleAutoVoice" title="{{autoVoiceEnabled ? '关闭自动语音' : '开启自动语音'}}">
+        <text class="icon">{{autoVoiceEnabled ? '🤖' : '🤖'}}</text>
+        <view class="status-indicator {{autoVoiceEnabled ? 'active' : 'inactive'}}"></view>
+      </button>
+      <button class="icon-btn" bindtap="toggleVoiceMode">
+        <text class="icon">{{voiceMode ? '🔊' : '🔇'}}</text>
+      </button>
+      <button class="icon-btn" bindtap="showSettings">
+        <text class="icon">⚙️</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- 聊天消息区域 -->
+  <scroll-view class="chat-messages" scroll-y="{{true}}" scroll-top="{{scrollTop}}" scroll-into-view="{{scrollIntoView}}">
+    <view wx:for="{{messages}}" wx:key="id" class="message-item {{item.type}}">
+      <!-- AI消息 -->
+      <view wx:if="{{item.type === 'ai'}}" class="message ai-message">
+        <image class="message-avatar" src="/images/ai-teacher.png" mode="aspectFill"></image>
+        <view class="message-content">
+          <view class="message-bubble ai-bubble">
+            <view class="message-text">{{item.text}}</view>
+            <view wx:if="{{item.translation}}" class="message-translation">{{item.translation}}</view>
+          </view>
+          <view class="message-time">{{item.time}}</view>
+        </view>
+        <button wx:if="{{item.audioUrl}}" class="play-btn {{isPlayingAI ? 'playing' : ''}}" bindtap="playAudio" data-url="{{item.audioUrl}}">
+          <text class="icon">{{isPlayingAI ? '⏸️' : '🔊'}}</text>
+        </button>
+      </view>
+
+      <!-- 用户消息 -->
+      <view wx:else class="message user-message">
+        <view class="message-content">
+          <view class="message-bubble user-bubble">
+            <view class="message-text">{{item.text}}</view>
+            <view wx:if="{{item.translation}}" class="message-translation">{{item.translation}}</view>
+          </view>
+          <view class="message-time">{{item.time}}</view>
+        </view>
+        <image class="message-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      </view>
+
+      <!-- 系统消息 -->
+      <view wx:if="{{item.type === 'system'}}" class="system-message">
+        <view class="system-text">{{item.text}}</view>
+      </view>
+    </view>
+
+    <!-- 打字指示器 -->
+    <view wx:if="{{isTyping}}" class="typing-indicator">
+      <image class="message-avatar" src="/images/ai-teacher.png" mode="aspectFill"></image>
+      <view class="typing-bubble">
+        <view class="typing-dots">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 语音状态显示 -->
+  <view wx:if="{{isRecording}}" class="recording-status">
+    <view class="recording-animation">
+      <view class="wave wave1"></view>
+      <view class="wave wave2"></view>
+      <view class="wave wave3"></view>
+    </view>
+    <view class="recording-text">正在录音...</view>
+    <view class="recording-tip">松开结束录音</view>
+  </view>
+
+  <!-- 输入区域 -->
+  <view class="input-area">
+    <!-- 文本输入模式 -->
+    <view wx:if="{{!voiceMode}}" class="text-input-mode">
+      <input class="text-input" 
+             placeholder="输入你想说的话..." 
+             value="{{inputText}}" 
+             bindinput="onInputChange"
+             bindconfirm="sendTextMessage"
+             confirm-type="send" />
+      <button class="send-btn" bindtap="sendTextMessage" disabled="{{!inputText.trim()}}">
+        <text class="icon">📤</text>
+      </button>
+    </view>
+
+    <!-- 语音输入模式 -->
+    <view wx:else class="voice-input-mode">
+      <button class="voice-btn {{isRecording ? 'recording' : ''}}" 
+              bindtouchstart="startRecording" 
+              bindtouchend="stopRecording"
+              bindtouchcancel="cancelRecording">
+        <view wx:if="{{!isRecording}}" class="voice-icon">🎤</view>
+        <view wx:else class="voice-icon recording">🎤</view>
+        <view class="voice-text">{{isRecording ? '松开结束' : '按住说话'}}</view>
+      </button>
+    </view>
+
+    <!-- 切换按钮 -->
+    <button class="mode-switch-btn" bindtap="toggleInputMode">
+      <text class="icon">{{voiceMode ? '⌨️' : '🎤'}}</text>
+    </button>
+  </view>
+
+  <!-- 快捷回复 -->
+  <view wx:if="{{showQuickReplies}}" class="quick-replies">
+    <view class="quick-reply-title">快捷回复：</view>
+    <view class="quick-reply-list">
+      <button wx:for="{{quickReplies}}" 
+              wx:key="*this" 
+              class="quick-reply-btn" 
+              bindtap="selectQuickReply" 
+              data-text="{{item}}">
+        {{item}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 学习提示 -->
+  <view wx:if="{{showLearningTip}}" class="learning-tip">
+    <view class="tip-content">
+      <text class="tip-icon">💡</text>
+      <text class="tip-text">{{learningTip}}</text>
+    </view>
+    <button class="tip-close" bindtap="closeLearningTip">×</button>
+  </view>
+</view>

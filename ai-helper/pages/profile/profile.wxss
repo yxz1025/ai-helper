@@ -1,0 +1,431 @@
+/* 个人资料页面样式 */
+.profile-container {
+  padding: 20rpx;
+  background-color: #F8F9FA;
+  min-height: 100vh;
+}
+
+/* 用户头像区域 */
+.profile-header {
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  border-radius: 20rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.avatar-section {
+  position: relative;
+  margin-right: 30rpx;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  flex: 1;
+}
+
+.username {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.user-level {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.level-badge {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5rpx 15rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.level-progress {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+/* 统计区域 */
+.stats-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.section-title .icon {
+  margin-right: 15rpx;
+  font-size: 36rpx;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.stat-card {
+  background: #FFFFFF;
+  border-radius: 15rpx;
+  padding: 30rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+}
+
+.stat-icon {
+  font-size: 40rpx;
+  margin-bottom: 15rpx;
+}
+
+.stat-number {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #FF6B9D;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 成就展示 */
+.achievements-section {
+  margin-bottom: 30rpx;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.achievement-item {
+  background: #FFFFFF;
+  border-radius: 15rpx;
+  padding: 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+  transition: all 0.3s ease;
+}
+
+.achievement-item.unlocked {
+  border: 2rpx solid #FF6B9D;
+  background: linear-gradient(135deg, #FFF0F5, #FFFFFF);
+}
+
+.achievement-item.locked {
+  opacity: 0.6;
+  filter: grayscale(50%);
+}
+
+.achievement-icon {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.achievement-name {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8rpx;
+}
+
+.achievement-progress {
+  font-size: 20rpx;
+  color: #666;
+}
+
+/* 学习日历 */
+.calendar-section {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.calendar-nav {
+  background: #F8F9FA;
+  border: none;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.calendar-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10rpx;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  position: relative;
+}
+
+.calendar-day.today {
+  background: #FF6B9D;
+  color: white;
+}
+
+.calendar-day.has-practice {
+  background: rgba(255, 107, 157, 0.2);
+}
+
+.day-number {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.practice-indicator {
+  position: absolute;
+  bottom: 5rpx;
+  color: #FF6B9D;
+  font-size: 16rpx;
+}
+
+/* 学习记录 */
+.records-section {
+  margin-bottom: 30rpx;
+}
+
+.records-list {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-icon {
+  font-size: 32rpx;
+  margin-right: 20rpx;
+  width: 50rpx;
+  text-align: center;
+}
+
+.record-content {
+  flex: 1;
+}
+
+.record-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.record-desc {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 5rpx;
+}
+
+.record-time {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.record-score {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #FF6B9D;
+}
+
+/* 学习目标 */
+.goals-section {
+  margin-bottom: 30rpx;
+}
+
+.goals-list {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+}
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.goal-item:last-child {
+  border-bottom: none;
+}
+
+.goal-info {
+  flex: 1;
+}
+
+.goal-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.goal-progress {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12rpx;
+  background: #F0F0F0;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B9D, #FF8E9B);
+  border-radius: 6rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 20rpx;
+  color: #666;
+  min-width: 80rpx;
+}
+
+.goal-status {
+  margin-left: 20rpx;
+}
+
+.completed {
+  font-size: 24rpx;
+}
+
+.pending {
+  font-size: 20rpx;
+  color: #FF6B9D;
+  font-weight: bold;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  display: flex;
+  gap: 15rpx;
+  margin-bottom: 30rpx;
+}
+
+.action-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  border: none;
+  border-radius: 15rpx;
+  padding: 25rpx;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.3);
+}
+
+.btn-icon {
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+
+.btn-text {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .quick-actions {
+    flex-direction: column;
+  }
+  
+  .calendar-grid {
+    gap: 8rpx;
+  }
+  
+  .day-number {
+    font-size: 20rpx;
+  }
+}

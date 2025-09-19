@@ -1,0 +1,149 @@
+<!--个人资料页面-->
+<view class="profile-container">
+  <!-- 用户头像区域 -->
+  <view class="profile-header">
+    <view class="avatar-section">
+      <image class="user-avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <button class="avatar-edit-btn" bindtap="changeAvatar">📷</button>
+    </view>
+    <view class="user-info">
+      <view class="username">{{userInfo.nickName || '小朋友'}}</view>
+      <view class="user-level">
+        <text class="level-badge">Lv.{{currentLevel}}</text>
+        <text class="level-progress">{{levelProgress}}/100</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习统计 -->
+  <view class="stats-section">
+    <view class="section-title">
+      <text class="icon">📊</text>
+      <text>学习统计</text>
+    </view>
+    
+    <view class="stats-grid">
+      <view class="stat-card">
+        <view class="stat-icon">🏆</view>
+        <view class="stat-number">{{totalScore}}</view>
+        <view class="stat-label">总分数</view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-icon">🔥</view>
+        <view class="stat-number">{{streak}}</view>
+        <view class="stat-label">连续天数</view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-icon">💬</view>
+        <view class="stat-number">{{totalPractice}}</view>
+        <view class="stat-label">对话次数</view>
+      </view>
+      <view class="stat-card">
+        <view class="stat-icon">📚</view>
+        <view class="stat-number">{{learnedWords}}</view>
+        <view class="stat-label">学会单词</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成就展示 -->
+  <view class="achievements-section">
+    <view class="section-title">
+      <text class="icon">🏅</text>
+      <text>学习成就</text>
+    </view>
+    
+    <view class="achievements-grid">
+      <view wx:for="{{achievements}}" wx:key="id" class="achievement-item {{item.unlocked ? 'unlocked' : 'locked'}}">
+        <view class="achievement-icon">{{item.icon}}</view>
+        <view class="achievement-name">{{item.name}}</view>
+        <view class="achievement-progress" wx:if="{{!item.unlocked}}">
+          {{item.progress}}/{{item.target}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习日历 -->
+  <view class="calendar-section">
+    <view class="section-title">
+      <text class="icon">📅</text>
+      <text>学习日历</text>
+    </view>
+    
+    <view class="calendar-header">
+      <button class="calendar-nav" bindtap="prevMonth">‹</button>
+      <view class="calendar-title">{{currentMonth}}</view>
+      <button class="calendar-nav" bindtap="nextMonth">›</button>
+    </view>
+    
+    <view class="calendar-grid">
+      <view wx:for="{{calendarDays}}" wx:key="*this" class="calendar-day {{item.hasPractice ? 'has-practice' : ''}} {{item.isToday ? 'today' : ''}}">
+        <view class="day-number">{{item.day}}</view>
+        <view wx:if="{{item.hasPractice}}" class="practice-indicator">●</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习记录 -->
+  <view class="records-section">
+    <view class="section-title">
+      <text class="icon">📝</text>
+      <text>最近学习</text>
+    </view>
+    
+    <view class="records-list">
+      <view wx:for="{{recentRecords}}" wx:key="id" class="record-item">
+        <view class="record-icon">{{item.icon}}</view>
+        <view class="record-content">
+          <view class="record-title">{{item.title}}</view>
+          <view class="record-desc">{{item.description}}</view>
+          <view class="record-time">{{item.time}}</view>
+        </view>
+        <view class="record-score">+{{item.score}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习目标 -->
+  <view class="goals-section">
+    <view class="section-title">
+      <text class="icon">🎯</text>
+      <text>学习目标</text>
+    </view>
+    
+    <view class="goals-list">
+      <view wx:for="{{goals}}" wx:key="id" class="goal-item">
+        <view class="goal-info">
+          <view class="goal-title">{{item.title}}</view>
+          <view class="goal-progress">
+            <view class="progress-bar">
+              <view class="progress-fill" style="width: {{item.progress}}%"></view>
+            </view>
+            <view class="progress-text">{{item.current}}/{{item.target}}</view>
+          </view>
+        </view>
+        <view class="goal-status">
+          <text wx:if="{{item.completed}}" class="completed">✅</text>
+          <text wx:else class="pending">{{item.progress}}%</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快捷操作 -->
+  <view class="quick-actions">
+    <button class="action-btn" bindtap="startPractice">
+      <text class="btn-icon">🎤</text>
+      <text class="btn-text">开始练习</text>
+    </button>
+    <button class="action-btn" bindtap="viewProgress">
+      <text class="btn-icon">📈</text>
+      <text class="btn-text">查看进度</text>
+    </button>
+    <button class="action-btn" bindtap="shareProgress">
+      <text class="btn-icon">📤</text>
+      <text class="btn-text">分享成绩</text>
+    </button>
+  </view>
+</view>

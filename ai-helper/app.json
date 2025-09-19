@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/chat/chat",
+    "pages/settings/settings",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF6B9D",
+    "navigationBarTitleText": "AI英语小助教",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFF0F5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF6B9D",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "需要录音权限来进行语音对话"
+    }
+  },
+  "requiredBackgroundModes": ["audio"],
+  "sitemapLocation": "sitemap.json"
+}

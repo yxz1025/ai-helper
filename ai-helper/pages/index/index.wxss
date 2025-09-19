@@ -1,0 +1,310 @@
+/* 首页样式 */
+.container {
+  padding-bottom: 120rpx;
+}
+
+/* 欢迎区域 */
+.welcome-section {
+  text-align: center;
+  padding: 40rpx 0;
+}
+
+.title {
+  font-size: 56rpx;
+  font-weight: bold;
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 30rpx;
+}
+
+/* 用户信息卡片 */
+.user-card {
+  margin: 20rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-details {
+  margin-left: 20rpx;
+}
+
+.username {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.age-info {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.level-badge {
+  text-align: center;
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  color: white;
+  padding: 20rpx;
+  border-radius: 20rpx;
+  min-width: 100rpx;
+}
+
+.level {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.level-text {
+  font-size: 20rpx;
+  opacity: 0.8;
+}
+
+/* 进度区域 */
+.progress-section {
+  margin: 20rpx;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.section-title .icon {
+  margin-right: 15rpx;
+  font-size: 36rpx;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30rpx;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #FF6B9D;
+  margin-bottom: 10rpx;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 15rpx;
+}
+
+/* 快速开始 */
+.quick-start-section {
+  margin: 20rpx;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.action-card {
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 157, 0.1);
+  transition: all 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-5rpx);
+  box-shadow: 0 8rpx 30rpx rgba(255, 107, 157, 0.2);
+}
+
+.action-icon {
+  font-size: 60rpx;
+  margin-bottom: 15rpx;
+}
+
+.action-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.action-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.primary-card {
+  border: 2rpx solid #FF6B9D;
+  background: linear-gradient(135deg, #FFF0F5, #FFFFFF);
+}
+
+.action-badge {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  background: #FF6B9D;
+  color: white;
+  font-size: 20rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+  font-weight: bold;
+}
+
+/* 成就区域 */
+.achievement-section {
+  margin: 20rpx;
+}
+
+.achievement-list {
+  margin-top: 20rpx;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #F0F0F0;
+}
+
+.achievement-item:last-child {
+  border-bottom: none;
+}
+
+.achievement-item.unlocked {
+  opacity: 1;
+}
+
+.achievement-item.locked {
+  opacity: 0.5;
+}
+
+.achievement-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.achievement-info {
+  flex: 1;
+}
+
+.achievement-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5rpx;
+}
+
+.achievement-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.achievement-status {
+  font-size: 24rpx;
+  color: #FF6B9D;
+  font-weight: bold;
+}
+
+/* 每日一句 */
+.daily-sentence {
+  margin: 20rpx;
+  text-align: center;
+}
+
+.sentence-content {
+  margin: 30rpx 0;
+}
+
+.sentence-en {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15rpx;
+  line-height: 1.5;
+}
+
+.sentence-zh {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.sentence-tip {
+  font-size: 24rpx;
+  color: #999;
+  font-style: italic;
+}
+
+/* 底部操作栏 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  padding: 20rpx;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.main-action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  padding: 25rpx;
+  border-radius: 50rpx;
+}
+
+.main-action .icon {
+  margin-right: 15rpx;
+  font-size: 36rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-stats {
+    flex-direction: column;
+    gap: 20rpx;
+  }
+  
+  .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

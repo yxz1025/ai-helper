@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成TabBar图标</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #FF6B9D;
+            text-align: center;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .icon-item {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: #fafafa;
+        }
+        .icon-preview {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border-radius: 8px;
+            background: #FF6B9D;
+            color: white;
+        }
+        .icon-preview.active {
+            background: #FF8E9B;
+        }
+        .icon-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .download-btn {
+            background: #FF6B9D;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .download-btn:hover {
+            background: #FF8E9B;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #FF6B9D;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 AI英语小助教 - TabBar图标生成器</h1>
+        
+        <div class="instructions">
+            <h3>📋 使用说明：</h3>
+            <div class="step">1. 点击下方按钮下载对应的图标文件</div>
+            <div class="step">2. 将下载的图标文件放入项目的 images/ 目录</div>
+            <div class="step">3. 重新编译项目，图标错误将消失</div>
+        </div>
+
+        <div class="icon-grid">
+            <!-- 首页图标 -->
+            <div class="icon-item">
+                <div class="icon-preview">🏠</div>
+                <div class="icon-name">首页图标</div>
+                <button class="download-btn" onclick="downloadIcon('home', '🏠', false)">下载普通图标</button>
+                <button class="download-btn" onclick="downloadIcon('home-active', '🏠', true)" style="margin-top: 5px;">下载激活图标</button>
+            </div>
+
+            <!-- 聊天图标 -->
+            <div class="icon-item">
+                <div class="icon-preview">💬</div>
+                <div class="icon-name">聊天图标</div>
+                <button class="download-btn" onclick="downloadIcon('chat', '💬', false)">下载普通图标</button>
+                <button class="download-btn" onclick="downloadIcon('chat-active', '💬', true)" style="margin-top: 5px;">下载激活图标</button>
+            </div>
+
+            <!-- 个人资料图标 -->
+            <div class="icon-item">
+                <div class="icon-preview">👤</div>
+                <div class="icon-name">个人资料图标</div>
+                <button class="download-btn" onclick="downloadIcon('profile', '👤', false)">下载普通图标</button>
+                <button class="download-btn" onclick="downloadIcon('profile-active', '👤', true)" style="margin-top: 5px;">下载激活图标</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>🔧 手动创建图标（可选）：</h3>
+            <div class="step">如果您不想下载，也可以手动创建简单的PNG图标：</div>
+            <div class="step">1. 创建64x64像素的PNG图片</div>
+            <div class="step">2. 使用简单的图标或文字</div>
+            <div class="step">3. 普通图标使用灰色 #999999</div>
+            <div class="step">4. 激活图标使用粉色 #FF6B9D</div>
+        </div>
+    </div>
+
+    <script>
+        function downloadIcon(filename, emoji, isActive) {
+            // 创建canvas
+            const canvas = document.createElement('canvas');
+            canvas.width = 64;
+            canvas.height = 64;
+            const ctx = canvas.getContext('2d');
+
+            // 设置背景颜色
+            if (isActive) {
+                ctx.fillStyle = '#FF6B9D'; // 激活状态 - 粉色
+            } else {
+                ctx.fillStyle = '#999999'; // 普通状态 - 灰色
+            }
+            ctx.fillRect(0, 0, 64, 64);
+
+            // 绘制emoji
+            ctx.font = '32px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = 'white';
+            ctx.fillText(emoji, 32, 32);
+
+            // 转换为blob并下载
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename + '.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        }
+
+        // 页面加载完成后的提示
+        window.onload = function() {
+            console.log('图标生成器已加载完成');
+            console.log('请点击按钮下载所需的图标文件');
+        };
+    </script>
+</body>
+</html>

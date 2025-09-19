@@ -1,0 +1,137 @@
+<!--首页-->
+<view class="container">
+  <!-- 欢迎区域 -->
+  <view class="welcome-section">
+    <view class="title">🌟 AI英语小助教 🌟</view>
+    <view class="subtitle">和AI老师一起快乐学英语！</view>
+    
+    <!-- 用户信息卡片 -->
+    <view class="user-card card">
+      <view class="flex flex-between">
+        <view class="user-info">
+          <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+          <view class="user-details">
+            <view class="username">{{userInfo.nickName || '小朋友'}}</view>
+            <view class="age-info">{{childAge}}岁 · {{difficultyText}}</view>
+          </view>
+        </view>
+        <view class="level-badge">
+          <view class="level">{{currentLevel}}</view>
+          <view class="level-text">等级</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 今日学习进度 -->
+  <view class="progress-section card">
+    <view class="section-title">
+      <text class="icon">📊</text>
+      <text>今日学习进度</text>
+    </view>
+    <view class="progress-stats">
+      <view class="stat-item">
+        <view class="stat-number">{{todayPractice}}</view>
+        <view class="stat-label">练习次数</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-number">{{streak}}</view>
+        <view class="stat-label">连续天数</view>
+      </view>
+      <view class="stat-item">
+        <view class="stat-number">{{totalScore}}</view>
+        <view class="stat-label">总分数</view>
+      </view>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercentage}}%"></view>
+    </view>
+    <view class="progress-text">今日目标：完成5次练习</view>
+  </view>
+
+  <!-- 快速开始 -->
+  <view class="quick-start-section">
+    <view class="section-title">
+      <text class="icon">🚀</text>
+      <text>快速开始</text>
+    </view>
+    
+    <view class="action-grid">
+      <view class="action-card primary-card" bindtap="startVoiceChat">
+        <view class="action-icon">🎤</view>
+        <view class="action-title">语音对话</view>
+        <view class="action-desc">和AI老师聊天</view>
+        <view class="action-badge" wx:if="{{autoVoiceEnabled}}">自动模式</view>
+      </view>
+      
+      <view class="action-card" bindtap="startAutoVoiceChat">
+        <view class="action-icon">🤖</view>
+        <view class="action-title">AI主动聊天</view>
+        <view class="action-desc">让AI主动发起对话</view>
+      </view>
+      
+      <view class="action-card" bindtap="startVocabulary">
+        <view class="action-icon">📚</view>
+        <view class="action-title">单词学习</view>
+        <view class="action-desc">学习新单词</view>
+      </view>
+      
+      <view class="action-card" bindtap="startStory">
+        <view class="action-icon">📖</view>
+        <view class="action-title">故事时间</view>
+        <view class="action-desc">听英语故事</view>
+      </view>
+      
+      <view class="action-card" bindtap="startGame">
+        <view class="action-icon">🎮</view>
+        <view class="action-title">趣味游戏</view>
+        <view class="action-desc">边玩边学</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 学习成就 -->
+  <view class="achievement-section card">
+    <view class="section-title">
+      <text class="icon">🏆</text>
+      <text>学习成就</text>
+    </view>
+    
+    <view class="achievement-list">
+      <view class="achievement-item {{achievement.unlocked ? 'unlocked' : 'locked'}}" 
+            wx:for="{{achievements}}" wx:key="id">
+        <view class="achievement-icon">{{achievement.icon}}</view>
+        <view class="achievement-info">
+          <view class="achievement-name">{{achievement.name}}</view>
+          <view class="achievement-desc">{{achievement.description}}</view>
+        </view>
+        <view class="achievement-status">
+          <text wx:if="{{achievement.unlocked}}">✅</text>
+          <text wx:else>{{achievement.progress}}/{{achievement.target}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 每日一句 -->
+  <view class="daily-sentence card">
+    <view class="section-title">
+      <text class="icon">💬</text>
+      <text>每日一句</text>
+    </view>
+    <view class="sentence-content">
+      <view class="sentence-en">{{dailySentence.english}}</view>
+      <view class="sentence-zh">{{dailySentence.chinese}}</view>
+      <view class="sentence-tip">{{dailySentence.tip}}</view>
+    </view>
+    <button class="btn-secondary" bindtap="playSentence">🔊 听发音</button>
+  </view>
+</view>
+
+<!-- 底部操作栏 -->
+<view class="bottom-actions">
+  <button class="btn-primary main-action" bindtap="startVoiceChat">
+    <text class="icon">🎤</text>
+    <text>开始语音对话</text>
+  </button>
+</view>

@@ -1,0 +1,529 @@
+/* 聊天页面样式 */
+.chat-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F9FA;
+}
+
+/* 聊天头部 */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  color: white;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.ai-avatar {
+  position: relative;
+  margin-right: 20rpx;
+}
+
+.ai-avatar image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  border: 3rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.status-dot {
+  position: absolute;
+  bottom: 5rpx;
+  right: 5rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid white;
+}
+
+.status-dot.online {
+  background-color: #4CAF50;
+}
+
+.ai-info {
+  flex: 1;
+}
+
+.ai-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 5rpx;
+}
+
+.ai-status {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10rpx;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.icon-btn .icon {
+  font-size: 28rpx;
+}
+
+.icon-btn {
+  position: relative;
+}
+
+.status-indicator {
+  position: absolute;
+  top: 5rpx;
+  right: 5rpx;
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  border: 2rpx solid white;
+}
+
+.status-indicator.active {
+  background-color: #4CAF50;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.inactive {
+  background-color: #999;
+}
+
+.play-btn.playing {
+  background: #4CAF50;
+  animation: pulse 1s infinite;
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+  flex: 1;
+  padding: 20rpx;
+  overflow-y: auto;
+}
+
+.message-item {
+  margin-bottom: 30rpx;
+}
+
+.message {
+  display: flex;
+  align-items: flex-end;
+  max-width: 80%;
+}
+
+.message-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  margin: 0 15rpx;
+}
+
+/* AI消息样式 */
+.ai-message {
+  justify-content: flex-start;
+}
+
+.ai-bubble {
+  background: #FFFFFF;
+  border-radius: 20rpx 20rpx 20rpx 5rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 用户消息样式 */
+.user-message {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.user-bubble {
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  color: white;
+  border-radius: 20rpx 20rpx 5rpx 20rpx;
+}
+
+.message-content {
+  flex: 1;
+}
+
+.message-bubble {
+  padding: 20rpx;
+  position: relative;
+}
+
+.message-text {
+  font-size: 28rpx;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.message-translation {
+  font-size: 24rpx;
+  opacity: 0.8;
+  margin-top: 10rpx;
+  padding-top: 10rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.user-bubble .message-translation {
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.message-time {
+  font-size: 20rpx;
+  color: #999;
+  margin-top: 10rpx;
+  text-align: center;
+}
+
+.play-btn {
+  background: #FF6B9D;
+  border: none;
+  border-radius: 50%;
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-left: 10rpx;
+}
+
+.play-btn .icon {
+  font-size: 24rpx;
+}
+
+/* 系统消息 */
+.system-message {
+  text-align: center;
+  margin: 20rpx 0;
+}
+
+.system-text {
+  background: rgba(255, 107, 157, 0.1);
+  color: #FF6B9D;
+  padding: 15rpx 30rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  display: inline-block;
+}
+
+/* 打字指示器 */
+.typing-indicator {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 30rpx;
+}
+
+.typing-bubble {
+  background: #FFFFFF;
+  border-radius: 20rpx 20rpx 20rpx 5rpx;
+  padding: 20rpx;
+  margin-left: 15rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.typing-dots {
+  display: flex;
+  gap: 8rpx;
+}
+
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #FF6B9D;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(1) { animation-delay: -0.32s; }
+.dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+  0%, 80%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 录音状态 */
+.recording-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 40rpx;
+  border-radius: 20rpx;
+  text-align: center;
+  z-index: 1000;
+}
+
+.recording-animation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.wave {
+  width: 8rpx;
+  height: 40rpx;
+  background: #FF6B9D;
+  margin: 0 4rpx;
+  border-radius: 4rpx;
+  animation: wave 1s infinite ease-in-out;
+}
+
+.wave1 { animation-delay: 0s; }
+.wave2 { animation-delay: 0.1s; }
+.wave3 { animation-delay: 0.2s; }
+
+@keyframes wave {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+  }
+}
+
+.recording-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.recording-tip {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+/* 输入区域 */
+.input-area {
+  background: #FFFFFF;
+  padding: 20rpx;
+  border-top: 1rpx solid #E9ECEF;
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+/* 文本输入模式 */
+.text-input-mode {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+.text-input {
+  flex: 1;
+  background: #F8F9FA;
+  border: 2rpx solid #E9ECEF;
+  border-radius: 25rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.text-input:focus {
+  border-color: #FF6B9D;
+  background: #FFFFFF;
+}
+
+.send-btn {
+  background: #FF6B9D;
+  border: none;
+  border-radius: 50%;
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.send-btn:disabled {
+  background: #E9ECEF;
+  color: #999;
+}
+
+.send-btn .icon {
+  font-size: 28rpx;
+}
+
+/* 语音输入模式 */
+.voice-input-mode {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.voice-btn {
+  background: linear-gradient(135deg, #FF6B9D, #FF8E9B);
+  border: none;
+  border-radius: 50rpx;
+  padding: 30rpx 60rpx;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 200rpx;
+  transition: all 0.3s ease;
+}
+
+.voice-btn.recording {
+  background: linear-gradient(135deg, #FF4757, #FF6B7A);
+  transform: scale(1.1);
+}
+
+.voice-icon {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.voice-icon.recording {
+  animation: pulse 1s infinite;
+}
+
+.voice-text {
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+/* 模式切换按钮 */
+.mode-switch-btn {
+  background: #F8F9FA;
+  border: 2rpx solid #E9ECEF;
+  border-radius: 50%;
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.mode-switch-btn .icon {
+  font-size: 28rpx;
+}
+
+/* 快捷回复 */
+.quick-replies {
+  background: #FFFFFF;
+  padding: 20rpx;
+  border-top: 1rpx solid #E9ECEF;
+}
+
+.quick-reply-title {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.quick-reply-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.quick-reply-btn {
+  background: #F8F9FA;
+  border: 2rpx solid #E9ECEF;
+  border-radius: 25rpx;
+  padding: 15rpx 25rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.quick-reply-btn:active {
+  background: #FF6B9D;
+  color: white;
+  border-color: #FF6B9D;
+}
+
+/* 学习提示 */
+.learning-tip {
+  position: fixed;
+  top: 100rpx;
+  left: 20rpx;
+  right: 20rpx;
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+  color: white;
+  padding: 20rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 4rpx 20rpx rgba(76, 175, 80, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tip-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.tip-icon {
+  font-size: 32rpx;
+  margin-right: 15rpx;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  line-height: 1.4;
+}
+
+.tip-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24rpx;
+  margin-left: 15rpx;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .message {
+    max-width: 85%;
+  }
+  
+  .voice-btn {
+    min-width: 150rpx;
+    padding: 25rpx 40rpx;
+  }
+  
+  .quick-reply-list {
+    gap: 10rpx;
+  }
+  
+  .quick-reply-btn {
+    padding: 12rpx 20rpx;
+    font-size: 22rpx;
+  }
+}
